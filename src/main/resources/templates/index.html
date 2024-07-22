@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Big Pharma</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* Custom properties for easy theming */
+        :root {
+            --main-bg: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --primary-color: #1f8eeb;
+            --secondary-color: #28a745;
+            --accent-color: #dc3545;
+            --nav-bg: rgba(0, 0, 0, 0.8);
+            --btn-bg: rgba(0, 0, 0, 0.8);
+            --btn-hover-bg: #111;
+            --text-color: #fff;
+            --footer-bg: rgba(0, 0, 0, 0.7);
+            --logo-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            --btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --btn-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            background: var(--main-bg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 100px;
+            box-shadow: var(--logo-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            font-size: 44px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            background-color: var(--footer-bg);
+        }
+
+        footer h2 {
+            margin-bottom: 20px;
+        }
+
+        .navbar-custom {
+            background-color: var(--nav-bg);
+            box-shadow: var(--btn-shadow);
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: var(--text-color);
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 15px;
+            box-shadow: var(--btn-shadow);
+            transition: all 0.3s ease;
+            background: var(--btn-bg);
+            border: none;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--btn-hover-bg);
+            box-shadow: var(--btn-hover-shadow);
+        }
+
+        .btn-primary i {
+            margin-right: 10px;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .btn-primary {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">+Big Pharma+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stock"><i class="fas fa-cubes"></i> Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/supplier"><i class="fas fa-handshake"></i> Supplier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
+        <h1>WELCOME TO +Big Pharma+</h1>
+    </div>
+
+    <div class="container">
+        <a class="btn btn-primary" href="/stock">
+            <i class="fas fa-cubes fa-4x"></i> Stock
+        </a>
+        <a class="btn btn-primary" href="/supplier">
+            <i class="fas fa-handshake fa-4x"></i> Supplier
+        </a>
+        <a class="btn btn-primary" href="/invoice">
+            <i class="fas fa-file-invoice fa-4x"></i> Bill
+        </a>
+        <a class="btn btn-primary" href="/expert">
+            <i class="fas fa-user-friends fa-4x"></i> Ask Expert
+        </a>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

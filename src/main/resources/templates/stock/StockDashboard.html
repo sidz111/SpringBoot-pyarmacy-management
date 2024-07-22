@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Big Pharma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00b09b, #96c93d, #ff6f61);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar-custom {
+            background: linear-gradient(90deg, #004d40, #00796b);
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #e0f2f1;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #c1d3d0;
+        }
+        .logo {
+            max-width: 120px;
+            animation: pulse 2s infinite;
+        }
+		@keyframes pulse {
+		           0% { transform: scale(1); }
+		           50% { transform: scale(1.05); }
+		           100% { transform: scale(1); }
+		       }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        h1, h2 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        .metric-card {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+        .metric-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ffeb3b;
+        }
+        .metric-card p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e0f2f1;
+        }
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .metric {
+            flex: 1 1 calc(50% - 20px);
+            margin: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            color: #ffffff;
+        }
+        .metric ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .metric li {
+            padding: 5px 0;
+        }
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        canvas {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">+Big Pharma+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/stock"><i class="fas fa-th-large"></i> Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/supplier"><i class="fas fa-handshake"></i> Supplier</a>
+                    </li>                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/info"><i class="fas fa-info-circle"></i> About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
+        <h1 class="text-center my-4">STOCK ANALYSIS REPORT</h1>
+        <div class="metrics">
+            <div class="metric-card">
+                <h2>Total Drugs</h2>
+                <p><strong th:text="${totalDrugs}">Loading...</strong></p>
+            </div>
+            <div class="metric-card">
+                <h2>Expired Drugs</h2>
+                <p><strong th:text="${expiredDrugs}">Loading...</strong></p>
+            </div>
+            <div class="metric-card">
+                <h2>Out-of-Stock Drugs</h2>
+                <p><strong th:text="${outOfStockDrugs}">Loading...</strong></p>
+            </div>
+        </div>
+        <div class="metrics">
+            <div class="metric">
+                <h2>Drug Category Distribution</h2>
+                <ul>
+                    <li th:each="entry : ${drugCategoryDistribution}">
+                        <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="metric">
+                <h2>Top Manufacturers</h2>
+                <ul>
+                    <li th:each="entry : ${topManufacturers}">
+                        <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="metrics">
+            <div class="metric">
+                <h2>Stock Quantity Analysis</h2>
+                <p>Average Stock Quantity: [[${averageStockQuantity}]]</p>
+                <p>Minimum Stock Quantity: [[${minStockQuantity}]]</p>
+                <p>Maximum Stock Quantity: [[${maxStockQuantity}]]</p>
+            </div>
+            <div class="metric">
+                <h2>Price Analysis</h2>
+                <p>Average Price: [[${averagePrice}]]</p>
+                <p>Minimum Price: [[${minPrice}]]</p>
+                <p>Maximum Price: [[${maxPrice}]]</p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <!-- Bar chart for Drug Category Distribution -->
+            <canvas id="categoryDistributionChart"></canvas>
+        
+            <!-- Bar chart for Top Manufacturers -->
+            <canvas id="topManufacturersChart"></canvas>
+        </div>
+        <script>
+            // Convert Thymeleaf variables to JavaScript variables
+            var drugCategoryDistribution = [[${drugCategoryDistribution}]];
+            var topManufacturers = [[${topManufacturers}]];
+        
+            // Bar chart for Drug Category Distribution
+            var categoryDistributionCtx = document.getElementById('categoryDistributionChart').getContext('2d');
+            var categoryDistributionChart = new Chart(categoryDistributionCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(drugCategoryDistribution),
+                    datasets: [{
+                        label: 'Category Distribution',
+                        data: Object.values(drugCategoryDistribution),
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        
+            // Bar chart for Top Manufacturers
+            var topManufacturersCtx = document.getElementById('topManufacturersChart').getContext('2d');
+            var topManufacturersChart = new Chart(topManufacturersCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(topManufacturers),
+                    datasets: [{
+                        label: 'Top Manufacturers',
+                        data: Object.values(topManufacturers),
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

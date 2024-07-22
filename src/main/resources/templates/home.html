@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Big Pharma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 50%, rgba(0,0,0,1) 100%);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ff0080 0%, #ff8c00 100%);
+            border: none;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 16px rgba(0, 255, 255, 0.5);
+            background: linear-gradient(135deg, #ff0080 0%, #ff5500 100%);
+            opacity: 1;
+        }
+
+        .btn-primary i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #0ff; /* Neon cyan */
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        footer h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        footer address {
+            font-style: normal;
+            line-height: 1.6;
+        }
+
+        .navbar-custom {
+            background: linear-gradient(135deg, #00bcd4 0%, #8e2de2 100%);
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #fff;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #ff00ff; /* Neon magenta */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>');
+        }
+
+        /* Animations */
+        .btn-primary {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff0080;
+            }
+            to {
+                box-shadow: 0 0 20px #ff5500, 0 0 30px #ff5500, 0 0 40px #ff5500;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">+Big Pharma+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stock"><i class="fas fa-th"></i> Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/supplier"><i class="fas fa-handshake"></i>
+                            Supplier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo"
+            class="logo"> <!-- Add your logo image -->
+        <h1>WELCOME TO +Big Pharma+</h1>
+        <div class="d-flex flex-wrap justify-content-center">
+            <a class="btn btn-primary" href="/stock">
+                <i class="fas fa-cubes"></i> Stock
+            </a>
+            <a class="btn btn-primary" href="/supplier">
+                <i class="fas fa-handshake"></i> Supplier
+            </a>
+            <a class="btn btn-primary" href="/invoice">
+                <i class="fas fa-file-invoice"></i> Bill
+            </a>
+            <a class="btn btn-primary" href="/expert">
+                <i class="fas fa-user-friends"></i> Ask Expert
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
