@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -9,146 +9,48 @@
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<style>
-		/* Custom styles */
-		body {
-			background: linear-gradient(135deg, #1a1a1a, #333333);
-			background-attachment: fixed;
-			font-family: 'Roboto', sans-serif;
-			color: #f5f5f5;
-		}
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle, #002a4d 0%, #011826 100%);
+            color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+        }
 
-		.navbar-custom {
-			background: rgba(0, 128, 128, 0.9);
-			/* Futuristic cyan */
-		}
+        .navbar-custom {
+            background: linear-gradient(135deg, #00695c, #004d40);
+            padding: 10px 20px;
+        }
 
-		.navbar-custom .navbar-brand,
-		.navbar-custom .nav-link {
-			color: #e0e0e0;
-		}
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #e0f7fa;
+            font-weight: bold;
+        }
 
-		.navbar-custom .nav-link:hover {
-			color: #00ffff;
-			text-shadow: 0 0 10px #00ffff;
-		}
+        .navbar-custom .nav-link:hover {
+            color: #80deea;
+        }
 
-		.container {
-			max-width: 900px;
-			margin: 0 auto;
-			padding: 30px;
-			background: rgba(50, 50, 50, 0.9);
-			/* Slightly transparent dark */
-			border-radius: 15px;
-			box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-		}
+        .logo {
+            max-width: 180px;
+            margin: 20px auto;
+        }
 
-		.btn-primary {
-			background: linear-gradient(45deg, #00bfff, #1e90ff);
-			/* Futuristic blue gradient */
-			border: none;
-			font-weight: bold;
-			transition: background 0.3s ease, box-shadow 0.3s ease;
-			color: #ffffff;
-		}
+        h1 {
+            font-size: 2.5rem;
+            color: #80deea;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 15px #004d40;
+        }
 
-		.btn-primary:hover {
-			background: linear-gradient(45deg, #1e90ff, #00bfff);
-			box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-		}
-
-		.btn-secondary {
-			background: linear-gradient(45deg, #a9a9a9, #696969);
-			/* Futuristic gray gradient */
-			border: none;
-			transition: background 0.3s ease, box-shadow 0.3s ease;
-			color: #ffffff;
-		}
-
-		.btn-secondary:hover {
-			background: linear-gradient(45deg, #696969, #a9a9a9);
-			box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-		}
-
-		.logo {
-			max-width: 150px;
-			margin-bottom: 20px;
-		}
-
-		h1 {
-			font-size: 32px;
-			font-weight: bold;
-			color: #00ffff;
-			text-shadow: 0 0 15px #00ffff;
-			margin-bottom: 30px;
-		}
-
-		th {
-			font-weight: bold;
-			text-align: center;
-			color: #00ffff;
-		}
-
-		.search-form {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin-bottom: 20px;
-		}
-
-		.search-form h4,
-		.search-form input,
-		.search-form button,
-		.search-form a {
-			margin-right: 10px;
-		}
-
-		.search-form input {
-			border: 1px solid #00ffff;
-			border-radius: 5px;
-			padding: 8px;
-			background: #1e1e1e;
-			color: #ffffff;
-		}
-
-		.search-form button,
-		.search-form a {
-			padding: 8px 12px;
-			font-size: 14px;
-			border-radius: 5px;
-		}
-	</style>
+    </style>
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-custom">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">+PharmaPlus+</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/stock"><i class="fas fa-th"></i> Stock</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link"  href="/supplier"><i class="fas fa-handshake"></i>
-							Supplier</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div th:replace="~{base :: header}"></div>
 
 	<div class="container">
 		<img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo"

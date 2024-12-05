@@ -5,79 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Big Pharma</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
+   <style>
+        /* Global Styles */
         body {
             font-family: 'Roboto', sans-serif;
-             background: linear-gradient(135deg, #34495e, #2c3e50);
-            color: #f4f4f4;
+            background: radial-gradient(circle, #002a4d 0%, #011826 100%);
+            color: #e0f7fa;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+
+        .navbar-custom {
+            background: linear-gradient(135deg, #00695c, #004d40);
+            padding: 10px 20px;
         }
-        .logo {
-            max-width: 150px;
-            margin: 0 auto 30px;
-            display: block;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        h2 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #e0e0e0;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .form-control, .form-select, .form-control:focus {
-            border: 2px solid #00bfae;
-            border-radius: 8px;
-            background-color: #333;
-            color: #e0e0e0;
-            box-shadow: none;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-        .form-control:focus, .form-select:focus {
-            border-color: #00d2ff;
-            background-color: #444;
-        }
-        .btn-primary {
-            background-color: #00bfae;
-            border: none;
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #e0f7fa;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
         }
-        .btn-primary:hover {
-            background-color: #00a69a;
-            transform: scale(1.05);
+
+        .navbar-custom .nav-link:hover {
+            color: #80deea;
         }
-        .btn-primary:active {
-            background-color: #009688;
-            transform: scale(0.98);
+
+        .logo {
+            max-width: 180px;
+            margin: 20px auto;
         }
-        .form-label {
-            font-size: 16px;
-            color: #cfd8dc;
-            margin-bottom: 10px;
+
+        h1 {
+            font-size: 2.5rem;
+            color: #80deea;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 15px #004d40;
         }
-        textarea.form-control {
-            resize: vertical;
-        }
+
     </style>
 </head>
 <body>
+	<div th:replace="~{base :: header}"></div>
     <div class="container">
         <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
         <h2>New Supplier Detail</h2>

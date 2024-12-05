@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -72,43 +72,32 @@
             margin-right: 10px;
             font-size: 1.5rem;
         }
-
-        footer {
-            background: #004d40;
-            padding: 20px;
-            color: #e0f7fa;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: #80deea;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 
 <body>
-   <div th:replace="~{base :: header}"></div>
-
-    <div class="container text-center">
-        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
-        <h1>WELCOME TO BIG PHARMA</h1>
-        <div class="d-flex flex-wrap justify-content-center">
-            <a class="btn btn-primary" href="/stock"><i class="fas fa-cubes"></i> Stock</a>
-            <a class="btn btn-primary" href="/supplier"><i class="fas fa-handshake"></i> Supplier</a>
-            <a class="btn btn-primary" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
-            <a class="btn btn-primary" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-pills"></i> Big Pharma</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/stock"><i class="fas fa-cubes"></i> Stock</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/supplier"><i class="fas fa-handshake"></i> Supplier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

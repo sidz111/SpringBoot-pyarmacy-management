@@ -12,131 +12,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     
     <style>
-        /* Custom styles */
+        /* Global Styles */
         body {
             font-family: 'Roboto', sans-serif;
-            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(14,14,14,1) 50%, rgba(0,0,0,1) 100%);
-            color: #c0c0c0;
+            background: radial-gradient(circle, #002a4d 0%, #011826 100%);
+            color: #e0f7fa;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
-        
-        h1 {
-            color: #0ff; /* Neon cyan */
-            font-weight: bold;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 48px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-        }
-        
-        .btn-primary {
-            background-color: #ff0077; /* Neon pink */
-            border: none;
-            color: #fff;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        
-        .btn-primary:hover {
-            background-color: #e6006f; /* Darker neon pink */
-            transform: scale(1.05);
-        }
-        
-        .btn-primary:active {
-            background-color: #b30057; /* Even darker neon pink */
-            transform: scale(0.98);
-        }
-        
-        .logo {
-            max-width: 120px; /* Adjust logo size as needed */
-            margin-bottom: 20px;
-            display: block;
-            margin: 0 auto;
-        }
-        
-        address {
-            font-style: normal;
-        }
-        
-        footer {
-            margin-top: 50px;
-            padding: 20px 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            text-align: center;
-        }
-        
+
         .navbar-custom {
-            background-color: #1a1a1a;
+            background: linear-gradient(135deg, #00695c, #004d40);
+            padding: 10px 20px;
         }
-        
+
         .navbar-custom .navbar-brand,
         .navbar-custom .nav-link {
-            color: #0ff; /* Neon cyan */
-            text-decoration: none;
+            color: #e0f7fa;
+            font-weight: bold;
         }
-        
+
         .navbar-custom .nav-link:hover {
-            color: #ff0077; /* Neon pink */
+            color: #80deea;
         }
-        
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: 2px solid #0ff; /* Neon cyan border */
-            border-radius: 8px;
-            background-color: #1a1a1a;
-            color: #c0c0c0;
-            box-shadow: none;
-            transition: border-color 0.3s, background-color 0.3s;
+
+        .logo {
+            max-width: 180px;
+            margin: 20px auto;
         }
-        
-        input:focus, textarea:focus {
-            border-color: #ff0077; /* Neon pink */
-            background-color: #333;
+
+        h1 {
+            font-size: 2.5rem;
+            color: #80deea;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 15px #004d40;
         }
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">+Big Pharma+</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/stock"><i class="fas fa-th"></i> Stock</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/supplier"><i class="fas fa-handshake"></i> Supplier</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div th:replace="~{base :: header}"></div>
 
     <div class="container">
         <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">

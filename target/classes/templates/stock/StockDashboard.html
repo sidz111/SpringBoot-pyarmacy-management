@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,129 +9,47 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
+        /* Global Styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #00b09b, #96c93d, #ff6f61);
-            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle, #002a4d 0%, #011826 100%);
+            color: #e0f7fa;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
+
         .navbar-custom {
-            background: linear-gradient(90deg, #004d40, #00796b);
+            background: linear-gradient(135deg, #00695c, #004d40);
+            padding: 10px 20px;
         }
+
         .navbar-custom .navbar-brand,
         .navbar-custom .nav-link {
-            color: #e0f2f1;
-        }
-        .navbar-custom .nav-link:hover {
-            color: #c1d3d0;
-        }
-        .logo {
-            max-width: 120px;
-            animation: pulse 2s infinite;
-        }
-		@keyframes pulse {
-		           0% { transform: scale(1); }
-		           50% { transform: scale(1.05); }
-		           100% { transform: scale(1); }
-		       }
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-        h1, h2 {
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        .metric-card {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            text-align: center;
-        }
-        .metric-card h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #ffeb3b;
-        }
-        .metric-card p {
-            font-size: 18px;
+            color: #e0f7fa;
             font-weight: bold;
-            color: #e0f2f1;
         }
-        .metrics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+
+        .navbar-custom .nav-link:hover {
+            color: #80deea;
         }
-        .metric {
-            flex: 1 1 calc(50% - 20px);
-            margin: 10px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid #ffffff;
-            border-radius: 10px;
-            color: #ffffff;
+
+        .logo {
+            max-width: 180px;
+            margin: 20px auto;
         }
-        .metric ul {
-            list-style-type: none;
-            padding: 0;
+
+        h1 {
+            font-size: 2.5rem;
+            color: #80deea;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 15px #004d40;
         }
-        .metric li {
-            padding: 5px 0;
-        }
-        .chart-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        canvas {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
+
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">+Big Pharma+</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/stock"><i class="fas fa-th-large"></i> Stock</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/supplier"><i class="fas fa-handshake"></i> Supplier</a>
-                    </li>                
-                    <li class="nav-item">
-                        <a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/info"><i class="fas fa-info-circle"></i> About Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div th:replace="~{base :: header}"></div>
     
     <div class="container">
         <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
@@ -191,12 +109,12 @@
         </div>
         <script>
             // Convert Thymeleaf variables to JavaScript variables
-            var drugCategoryDistribution = [[${drugCategoryDistribution}]];
-            var topManufacturers = [[${topManufacturers}]];
+            let drugCategoryDistribution = [[$[drugCategoryDistribution]]
+            let topManufacturers = [[$[topManufacturers]]]
         
             // Bar chart for Drug Category Distribution
-            var categoryDistributionCtx = document.getElementById('categoryDistributionChart').getContext('2d');
-            var categoryDistributionChart = new Chart(categoryDistributionCtx, {
+            let categoryDistributionCtx = document.getElementById('categoryDistributionChart').getContext('2d');
+            let categoryDistributionChart = new Chart(categoryDistributionCtx, {
                 type: 'bar',
                 data: {
                     labels: Object.keys(drugCategoryDistribution),
