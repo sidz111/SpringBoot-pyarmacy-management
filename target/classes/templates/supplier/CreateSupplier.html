@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,13 +42,93 @@
             margin: 20px 0;
             text-shadow: 0 0 15px #004d40;
         }
+        
+        /* General Container Styling */
+.container {
+    padding: 30px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Heading Styling */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #4caf50; /* Green color for pharmacy theme */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+form {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* White background for form */
+}
+
+.form-label {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #4caf50;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}
+        
 
     </style>
 </head>
 <body>
 	<div th:replace="~{base :: header}"></div>
     <div class="container">
-        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
         <h2>New Supplier Detail</h2>
         <form method="post" th:action="@{/supplier/create}" th:object="${supplierDTO}" class="mt-4">
             <div class="mb-3">

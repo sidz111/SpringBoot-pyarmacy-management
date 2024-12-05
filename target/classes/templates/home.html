@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -72,24 +72,11 @@
             margin-right: 10px;
             font-size: 1.5rem;
         }
-
-        footer {
-            background: #004d40;
-            padding: 20px;
-            color: #e0f7fa;
-            text-align: center;
-            margin-top: 50px;
+        
+        .container{
+        margin-top: 180px;
         }
-
-        footer a {
-            color: #80deea;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
+        
     </style>
 </head>
 
@@ -97,7 +84,6 @@
    <div th:replace="~{base :: header}"></div>
 
     <div class="container text-center">
-        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
         <h1>WELCOME TO BIG PHARMA</h1>
         <div class="d-flex flex-wrap justify-content-center">
             <a class="btn btn-primary" href="/stock"><i class="fas fa-cubes"></i> Stock</a>

@@ -43,6 +43,143 @@
             margin: 20px 0;
             text-shadow: 0 0 15px #004d40;
         }
+        
+        /* Search Form Styles */
+#search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0, 42, 77, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#search-form input[type="text"],
+#search-form input[type="date"],
+#search-form select {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #003244;
+    color: #e0f7fa;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+#search-form input[type="text"]:focus,
+#search-form input[type="date"]:focus,
+#search-form select:focus {
+    box-shadow: 0 4px 8px rgba(0, 100, 150, 0.5);
+}
+
+#search-form button,
+#search-form a {
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #00695c, #004d40);
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+#search-form button:hover,
+#search-form a:hover {
+    background: linear-gradient(135deg, #004d40, #002a26);
+    color: #80deea;
+}
+
+.autocomplete-suggestions {
+    position: absolute;
+    z-index: 1000;
+    background: #003244;
+    border: 1px solid #004d40;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    color: #e0f7fa;
+}
+
+.autocomplete-suggestion {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.autocomplete-suggestion:hover {
+    background: #004d40;
+    color: #80deea;
+}
+        
+/* Table Styles */
+table {
+    width: 100%;
+    margin: 20px 0;
+    background: rgba(0, 42, 77, 0.8);
+    border-radius: 8px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+thead {
+    background: linear-gradient(135deg, #00695c, #004d40);
+    color: #e0f7fa;
+    font-weight: bold;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #004d40;
+    text-align: center;
+    color: #e0f7fa;
+}
+
+tbody tr {
+    background: #003244;
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background: #004d40;
+}
+
+tbody td {
+    white-space: nowrap;
+}
+
+table .btn {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+table .btn i {
+    margin-right: 5px;
+}
+
+table .btn-primary {
+    background: linear-gradient(135deg, #00695c, #004d40);
+    color: #e0f7fa;
+}
+
+table .btn-danger {
+    background: linear-gradient(135deg, #c62828, #b71c1c);
+    color: #ffffff;
+}
+
+table .btn:hover {
+    background: linear-gradient(135deg, #004d40, #002a26);
+    color: #80deea;
+}
 
     </style>
 
@@ -52,7 +189,6 @@
     <div th:replace="~{base :: header}"></div>
 
     <div class="container">
-        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
         <h1 class="text-center mb-4">Handling Stock Details</h1>
 
         <div class="d-flex justify-content-between mb-4">

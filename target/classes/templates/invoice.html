@@ -1,145 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
-    <!-- jsPDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <!-- Custom styles -->
-    <style>
-        body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            background-size: cover;
-            background-repeat: no-repeat;
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-            margin: 0;
-        }
+<!-- jsPDF -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            color: #fff;
-        }
+<!-- Custom styles -->
+<style>
+/* Global Styles */
+/* Global Styles */
+body {
+	font-family: 'Roboto', sans-serif;
+	background: radial-gradient(circle, #002a4d 0%, #011826 100%);
+	color: #e0f7fa;
+	margin: 0;
+	padding: 0;
+}
 
-        .btn-primary {
-            background-color: #1f8eeb;
-            border: none;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.navbar-custom {
+	background: linear-gradient(135deg, #00695c, #004d40);
+	padding: 10px 20px;
+}
 
-        .btn-primary:hover {
-            background-color: #1a6fb6;
-        }
+.navbar-custom .navbar-brand, .navbar-custom .nav-link {
+	color: #e0f7fa;
+	font-weight: bold;
+}
 
-        .btn-success {
-            background-color: #28a745;
-            border: none;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.navbar-custom .nav-link:hover {
+	color: #80deea;
+}
 
-        .btn-success:hover {
-            background-color: #218838;
-        }
+.logo {
+	max-width: 180px;
+	margin: 20px auto;
+}
 
-        .logo {
-            max-width: 120px;
-        }
+h1 {
+	font-size: 2.5rem;
+	color: #80deea;
+	font-weight: bold;
+	margin: 20px 0;
+	text-shadow: 0 0 15px #004d40;
+}
 
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #f1f1f1;
-        }
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+}
 
-        th {
-            font-weight: bold;
-            text-align: center;
-            background-color: #3b3b3b;
-        }
+/* Container Styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-        .navbar-custom {
-            background: rgba(0, 0, 0, 0.8);
-            border-bottom: 2px solid #1f8eeb;
-        }
+/* Header Styling */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: bold;
+}
 
-        .navbar-custom .navbar-brand,
-        .navbar-custom .nav-link {
-            color: #f1f1f1;
-            text-decoration: none;
-        }
+/* Form Styling */
+.invoice-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
-        .navbar-custom .nav-link:hover {
-            color: #1f8eeb;
-        }
+.mb-3 {
+    margin-bottom: 15px;
+}
 
-        a:hover {
-            color: #1f8eeb;
-        }
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
 
-        .btn-left {
-            float: left;
-        }
+/* Input Fields Styling */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
 
-        .table {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid #444;
-        }
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
 
-        .table th,
-        .table td {
-            padding: 12px;
-        }
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
-        .table thead th {
-            background-color: #2c2c2c;
-            color: #fff;
-        }
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        .form-control {
-            background: #333;
-            border: 1px solid #555;
-            color: #fff;
-            border-radius: 5px;
-        }
+th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
 
-        .form-control:focus {
-            background: #444;
-            border-color: #1f8eeb;
-            color: #fff;
-        }
+td input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
-        /* Colorful Text */
-        .text-primary {
-            color: rgb(255, 255, 255);
-        }
+td button {
+    width: 40px;
+    height: 40px;
+    background-color: #f44336;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
 
-        .text-success {
-            color: rgb(255, 255, 255);
-        }
+td button:hover {
+    background-color: #d32f2f;
+}
 
-        .text-danger {
-            color: #dc3545;
-        }
-    </style>
+/* Add Row Button */
+.btn-custom {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
 
-    <script>
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+/* Total Amount Section */
+#totalAmount {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    background-color: #f9f9f9;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button[type="button"]:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 10px;
+    }
+
+    .btn-custom {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    td button {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+</style>
+
+<script>
         function calculateTotal() {
             var total = 0;
             var rows = document.getElementById('invoiceTable').rows;
@@ -165,11 +244,11 @@
             var cell4 = row.insertCell(3);
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
-            cell1.innerHTML = '<input type="text" name="drugId" class="form-control text-primary">';
-            cell2.innerHTML = '<input type="text" name="drugName" class="form-control text-success">';
-            cell3.innerHTML = '<input type="number" name="quantity" class="form-control text-primary">';
-            cell4.innerHTML = '<input type="number" step="0.01" name="price" class="form-control text-success">';
-            cell5.innerHTML = '<input type="number" step="0.01" name="total" class="form-control text-danger" readonly>';
+            cell1.innerHTML = '<input type="text" name="drugId" class="form-control">';
+            cell2.innerHTML = '<input type="text" name="drugName" class="form-control">';
+            cell3.innerHTML = '<input type="number" name="quantity" class="form-control" onchange="calculateTotal()">';
+            cell4.innerHTML = '<input type="number" step="0.01" name="price" class="form-control" onchange="calculateTotal()">';
+            cell5.innerHTML = '<input type="number" step="0.01" name="total" class="form-control" readonly>';
             cell6.innerHTML = '<button type="button" onclick="deleteRow(this)" class="btn btn-danger"><i class="fas fa-trash"></i></button>';
         }
 
@@ -181,22 +260,17 @@
         function genBill() {
             var doc = new jsPDF();
 
-            // Set font for the entire document
             doc.setFont('helvetica');
             doc.setFontType('bold');
 
-            // Add a background color
             doc.setFillColor(30, 30, 30);
-            doc.rect(0, 0, 210, 297, 'F'); // A4 size page
+            doc.rect(0, 0, 210, 297, 'F');
 
-            // Add a header with a background color
-            doc.setFillColor(100, 100, 200); // A nice blue color
+            doc.setFillColor(100, 100, 200);
             doc.rect(0, 0, 210, 30, 'F');
-            doc.setTextColor(255, 255, 255); // White text
-            doc.text('+Big Pharma+', 105, 20, 'center');
-
-            // Add customer details with a slight gray color
             doc.setTextColor(255, 255, 255);
+            doc.text('Pharmacy Invoice', 105, 20, 'center');
+
             var customerName = document.getElementById('customerName').value;
             var customerContact = document.getElementById('customerContact').value;
             var customerAddress = document.getElementById('customerAddress').value;
@@ -209,8 +283,7 @@
             doc.text('Age: ' + customerAge, 10, 70);
             doc.text('Gender: ' + customerGender, 10, 80);
 
-            // Add table headers
-            doc.setTextColor(255, 255, 255); // White text for headers
+            doc.setTextColor(255, 255, 255);
             doc.setFontSize(10);
             doc.setFontStyle('bold');
             doc.text('Drug ID', 10, 90);
@@ -219,7 +292,6 @@
             doc.text('Price', 130, 90);
             doc.text('Total', 170, 90);
 
-            // Add table rows
             var table = document.getElementById('invoiceTable');
             var yOffset = 100;
             for (var i = 1; i < table.rows.length; i++) {
@@ -236,10 +308,9 @@
                 doc.text(price, 130, yOffset);
                 doc.text(total, 170, yOffset);
 
-                yOffset += 10; // Move to the next row
+                yOffset += 10;
             }
 
-            // Add total amount
             var totalAmount = document.getElementById('totalAmount').value;
             doc.setFontStyle('bold');
             doc.text('Total Amount: ' + totalAmount, 10, yOffset);
@@ -247,107 +318,85 @@
             doc.save('invoice.pdf');
         }
     </script>
-    <title>Invoice Generator</title>
+
+<title>Pharmacy Invoice Generator</title>
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-custom">
-	       <div class="container-fluid">
-	           <a class="navbar-brand" href="#">+Big Pharma+</a>
-	           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-	               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	               <span class="navbar-toggler-icon"></span>
-	           </button>
-	           <div class="collapse navbar-collapse" id="navbarNav">
-	               <ul class="navbar-nav">
-	                   <li class="nav-item">
-	                       <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
-	                   </li>
-	                   <li class="nav-item">
-	                       <a class="nav-link" href="/stock"><i class="fas fa-th"></i> Stock</a>
-	                   </li>
-	                   <li class="nav-item">
-	                       <a class="nav-link" aria-current="page" href="/supplier"><i class="fas fa-handshake"></i>
-	                           Supplier</a>
-	                   </li>
-	                   <li class="nav-item">
-	                       <a class="nav-link" href="/invoice"><i class="fas fa-file-invoice"></i> Bill</a>
-	                   </li>
-	                   <li class="nav-item">
-	                       <a class="nav-link" href="/expert"><i class="fas fa-user-friends"></i> Ask Expert</a>
-	                   </li>
-	               </ul>
-	           </div>
-	       </div>
-	   </nav>
+	<div th:replace="~{base :: header}"></div>
 
-    <div class="container">
-        <h1>Invoice Generator</h1>
-        <form onsubmit="return calculateTotal();">
-            <div class="mb-3">
-                <label for="customerName" class="form-label text-primary">Customer Name</label>
-                <input type="text" class="form-control text-success" id="customerName" required>
-            </div>
-            <div class="mb-3">
-                <label for="customerContact" class="form-label text-primary">Contact</label>
-                <input type="text" class="form-control text-success" id="customerContact" required>
-            </div>
-            <div class="mb-3">
-                <label for="customerAddress" class="form-label text-primary">Address</label>
-                <input type="text" class="form-control text-success" id="customerAddress" required>
-            </div>
-            <div class="mb-3">
-                <label for="customerAge" class="form-label text-primary">Age</label>
-                <input type="number" class="form-control text-success" id="customerAge" required>
-            </div>
-            <div class="mb-3">
-                <label for="customerGender" class="form-label text-primary">Gender</label>
-                <select id="customerGender" class="form-control text-success" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
+	<div class="container">
+		<h1>Invoice Generator</h1>
+		<div class="invoice-form">
+			<form onsubmit="return calculateTotal();">
+				<div class="mb-3">
+					<label for="customerName" class="form-label">Customer Name</label>
+					<input type="text" class="form-control" id="customerName" required>
+				</div>
+				<div class="mb-3">
+					<label for="customerContact" class="form-label">Contact</label> <input
+						type="text" class="form-control" id="customerContact" required>
+				</div>
+				<div class="mb-3">
+					<label for="customerAddress" class="form-label">Address</label> <input
+						type="text" class="form-control" id="customerAddress" required>
+				</div>
+				<div class="mb-3">
+					<label for="customerAge" class="form-label">Age</label> <input
+						type="number" class="form-control" id="customerAge" required>
+				</div>
+				<div class="mb-3">
+					<label for="customerGender" class="form-label">Gender</label> <select
+						id="customerGender" class="form-control" required>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
 
-            <table id="invoiceTable" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="text-primary">Drug ID</th>
-                        <th class="text-primary">Drug Name</th>
-                        <th class="text-primary">Quantity</th>
-                        <th class="text-primary">Price</th>
-                        <th class="text-primary">Total</th>
-                        <th class="text-primary">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Initial row -->
-                    <tr>
-                        <td><input type="text" name="drugId" class="form-control text-primary"></td>
-                        <td><input type="text" name="drugName" class="form-control text-success"></td>
-                        <td><input type="number" name="quantity" class="form-control text-primary"></td>
-                        <td><input type="number" step="0.01" name="price" class="form-control text-success"></td>
-                        <td><input type="number" step="0.01" name="total" class="form-control text-danger" readonly></td>
-                        <td><button type="button" onclick="deleteRow(this)" class="btn btn-danger"><i class="fas fa-trash"></i></button></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="mb-3">
-                <button type="button" onclick="addRow()" class="btn btn-success">Add Row</button>
-            </div>
-            <div class="mb-3">
-                <label for="totalAmount" class="form-label text-primary">Total Amount</label>
-                <input type="text" class="form-control text-danger" id="totalAmount" readonly>
-            </div>
-            <button type="submit" class="btn btn-primary">Calculate Total</button>
-            <button type="button" onclick="genBill()" class="btn btn-success">Generate PDF</button>
-        </form>
-    </div>
-
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+				<table id="invoiceTable" class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Drug ID</th>
+							<th>Drug Name</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Total</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" name="drugId" class="form-control"></td>
+							<td><input type="text" name="drugName" class="form-control"></td>
+							<td><input type="number" name="quantity"
+								class="form-control" onchange="calculateTotal()"></td>
+							<td><input type="number" step="0.01" name="price"
+								class="form-control" onchange="calculateTotal()"></td>
+							<td><input type="number" step="0.01" name="total"
+								class="form-control" readonly></td>
+							<td><button type="button" onclick="deleteRow(this)"
+									class="btn btn-danger">
+									<i class="fas fa-trash"></i>
+								</button></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="mb-3">
+					<button type="button" class="btn btn-custom" onclick="addRow()">Add
+						Row</button>
+				</div>
+				<div class="mb-3">
+					<label for="totalAmount" class="form-label">Total Amount</label> <input
+						type="text" id="totalAmount" class="form-control" readonly>
+				</div>
+				<div class="mb-3">
+					<button type="button" class="btn btn-custom" onclick="genBill()">Generate
+						PDF Invoice</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 
 </html>

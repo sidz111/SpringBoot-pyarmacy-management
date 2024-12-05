@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +48,106 @@
             margin: 20px 0;
             text-shadow: 0 0 15px #004d40;
         }
+        
+        /* General Container Styling */
+.container {
+    padding: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4caf50; /* Green color to match pharmacy theme */
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Form Styling */
+form {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Light grey background for the form */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Row Styling for labels and inputs */
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+.col-form-label {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+    width: 30%;
+}
+
+/* Input and Textarea Styling */
+.form-control {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+/* Textarea Styling */
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+/* Button Hover Effect */
+button[type="submit"]:hover {
+    background-color: #45a049; /* Darker green for hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .col-form-label {
+        font-size: 1rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        width: auto;
+    }
+}
+        
 
     </style>
 </head>
@@ -56,7 +156,6 @@
     <div th:replace="~{base :: header}"></div>
 
     <div class="container">
-        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo" class="logo">
         <h1>WELCOME TO +Big Pharma+</h1>
         
         <form th:action="@{/question}" method="post" class="mt-4">
@@ -79,6 +178,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            
         </form>
     </div>
     

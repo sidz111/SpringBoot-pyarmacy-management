@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -45,6 +45,126 @@
             margin: 20px 0;
             text-shadow: 0 0 15px #004d40;
         }
+        
+        /* General Container Styling */
+.container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+    margin-top: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Heading Styling */
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #004d40;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid #00796b;
+    padding-bottom: 10px;
+}
+
+/* Label Styling */
+label {
+    color: #004d40;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+/* Form Input Fields Styling */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    background-color: #f9f9f9;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Disabled and Read-Only Fields Styling */
+input[readonly],
+select[disabled],
+textarea[readonly] {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+/* Focus Styling for Input Fields */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    background-color: #ffffff;
+    border-color: #004d40;
+    outline: none;
+}
+
+/* Textarea Styling */
+textarea {
+    resize: none;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    background: linear-gradient(135deg, #00796b, #004d40);
+    color: #ffffff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover Effect for Button */
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #004d40, #00796b);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+}
+        
 
     </style>
 </head>
@@ -54,8 +174,6 @@
 <div th:replace="~{base :: header}"></div>
 
     <div class="container mt-4">
-        <img src="https://seeklogo.com/images/P/pharmacy-logo-4729C66E18-seeklogo.com.png" alt="Pharmacy Logo"
-            class="logo mx-auto d-block mb-3">
         <h2 class="mb-5">Update Stock Detail</h2>
         <form method="post" th:action="@{/stock/edit}" th:object="${stockDTO}" class="mt-4">
             <div class="mb-3 row">
